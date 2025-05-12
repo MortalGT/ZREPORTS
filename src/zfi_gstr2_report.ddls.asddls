@@ -3,17 +3,19 @@
 @Metadata.ignorePropagatedAnnotations: true
 @Metadata.allowExtensions: true
 define root view entity ZFI_GSTR2_REPORT
-  as select from    ZFI_GSTR2_REP1               as a
-    left outer join ZFI_GSTR2_SUPP_ATTR_REV      as b on  a.CompanyCode        = b.CompanyCode
-                                                      and a.AccountingDocument = b.AccountingDocument
-                                                      and a.FiscalYear         = b.FiscalYear
+  as select distinct from ZFI_GSTR2_REP1               as a
+    left outer join       ZFI_GSTR2_SUPP_ATTR_REV      as b on  a.CompanyCode        = b.CompanyCode
+                                                            and a.AccountingDocument = b.AccountingDocument
+                                                            and a.FiscalYear         = b.FiscalYear
 
-    left outer join ZFI_GSTR2_TAX_AMT_FINAL      as c on  a.CompanyCode        = c.CompanyCode
-                                                      and a.AccountingDocument = c.AccountingDocument
-                                                      and a.FiscalYear         = c.FiscalYear
-    left outer join ZR_FIT_TAX_PERC              as n on c.TaxCode = n.Taxcode
-    left outer join I_TaxCodeText                as k on c.TaxCode = k.TaxCode
-    left outer join I_EnterpriseProjectElement_2 as m on a.WBSElementInternalID = m.WBSElementInternalID
+    left outer join       ZFI_GSTR2_TAX_AMT_FINAL      as c on  a.CompanyCode        = c.CompanyCode
+                                                            and a.AccountingDocument = c.AccountingDocument
+                                                            and a.FiscalYear         = c.FiscalYear
+                                                            and a.taxcode1           = c.TaxCode ////////add by sandeep
+
+    left outer join       ZR_FIT_TAX_PERC              as n on c.TaxCode = n.Taxcode
+    left outer join       I_TaxCodeText                as k on c.TaxCode = k.TaxCode
+//    left outer join       I_EnterpriseProjectElement_2 as m on a.WBSElementInternalID = m.WBSElementInternalID
   ////    left outer join ZFI_GSTR2_CGST_AMT      as d on  a.CompanyCode        = d.CompanyCode
   ////                                                 and a.AccountingDocument = d.AccountingDocument
   ////                                                 and a.FiscalYear         = d.FiscalYear
@@ -21,16 +23,17 @@ define root view entity ZFI_GSTR2_REPORT
   ////    left outer join ZFI_GSTR2_SGST_AMT      as e on  a.CompanyCode        = e.CompanyCode
   ////                                                 and a.AccountingDocument = e.AccountingDocument
   ////                                                 and a.FiscalYear         = e.FiscalYear
-    left outer join ZFI_GSTR2_EXP_GL             as h on  c.AccountingDocument = h.AccountingDocument
-                                                      and c.FiscalYear         = h.FiscalYear
-                                                      and c.CompanyCode        = h.CompanyCode
-                                                      and c.TaxCode            = h.TaxCode
+    left outer join       ZFI_GSTR2_EXP_GL             as h on  c.AccountingDocument = h.AccountingDocument
+                                                            and c.FiscalYear         = h.FiscalYear
+                                                            and c.CompanyCode        = h.CompanyCode
+                                                            and c.TaxCode            = h.TaxCode
 {
   key a.CompanyCode,
   key a.FiscalYear,
   key a.AccountingDocument,
   key c.TaxCode,
       a.CompanyCodeCurrency,
+      a.Plant,
       a.CustGstin,
       a.BusinessPlace,
       h.CostElement   as ExpGLAcct,
@@ -40,11 +43,12 @@ define root view entity ZFI_GSTR2_REPORT
       a.DocumentDate,
       a.PostingDate,
       a.Supplier,
-      a.SupplierFullName,
+      a.SupplierName,
       a.SupplierGSTIN,
       a.CityName,
       a.RegionName,
       a.PlaceOfSupply,
+      a.SupplierAccountGroup,
       b.SuppAttRevChrge,
       a.PoDocument,
       //      c.TaxCode,
@@ -86,23 +90,23 @@ define root view entity ZFI_GSTR2_REPORT
       b.NDGst,
       //      a.HsnSacCode,
       a.ProfitCenter,
-      a.ProfitCenterDesp,
+//      a.ProfitCenterDesp,
       //      a.HsnNature,
-      a.GstinStatus,
+//      a.GstinStatus,
       //      @Semantics.quantity.unitOfMeasure: 'Uom'
       //      a.Qty,
       //      a.Uom,
-      a.ParkBy,
+//      a.ParkBy,
       a.PostBy,
-      a.Pan,
-      a.MsmeStatus,
-      case a.clearind
-      when 'X'
-      then 'Cleared'
-      else 'Open'
-      end             as ClearStatus,
-      a.InvRefNumber,
-      m.ProjectElement
+      a.Pan
+//      a.MsmeStatus,
+//      case a.clearind
+//      when 'X'
+//      then 'Cleared'
+//      else 'Open'
+//      end             as ClearStatus,
+//      a.InvRefNumber,
+//      m.ProjectElement
 
 }
 group by
@@ -119,13 +123,15 @@ group by
   a.DocumentDate,
   a.PostingDate,
   a.Supplier,
-  a.SupplierFullName,
+  a.SupplierName,
   a.SupplierGSTIN,
   a.CityName,
   a.RegionName,
   a.PlaceOfSupply,
+  a.SupplierAccountGroup,
   b.SuppAttRevChrge,
   a.PoDocument,
+  a.Plant,
   c.TaxCode,
   k.TaxCodeName,
   a.ItemTaxAmt,
@@ -151,18 +157,18 @@ group by
   b.NDGst,
   //  a.HsnSacCode,
   a.ProfitCenter,
-  a.ProfitCenterDesp,
+//  a.ProfitCenterDesp,
   //  a.HsnNature,
-  a.GstinStatus,
-//  a.Qty,
-//  a.Uom,
-  a.ParkBy,
+//  a.GstinStatus,
+  //  a.Qty,
+  //  a.Uom,
+//  a.ParkBy,
   a.PostBy,
   a.Pan,
   a.BusinessPlace,
-  a.MsmeStatus,
-  a.clearind,
-  a.InvRefNumber,
-  m.ProjectElement,
+//  a.MsmeStatus,
+//  a.clearind,
+//  a.InvRefNumber,
+//  m.ProjectElement,
   h.CostElement,
   h.GLAccountName

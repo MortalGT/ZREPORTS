@@ -10,13 +10,9 @@ define root view entity ZFI_GSTR2_COMP_GSTIN
   key FiscalYear,
       BusinessPlace,
       case CompanyCode
-      when '1100' then '06ABNCS8610B1ZF'
-      when '1200' then '27AAJCN7374A1ZD'
-      when '1300' then '27ABNCS8537R1Z4'
-      when '1000' then ( case BusinessPlace
-                         when 'MH27' then '27AAICN6209K1Z5'
-                         when 'HR06' then '06AAICN6209K1Z9'
-                         end )
+      when '1000' then '27AAACI1091A2Z4'
+      when '2000' then '24AACCI0787M1ZB'
+      when '4000' then '27AAGCI9693C1Z7'
            end as CompGSTIN
 
 }

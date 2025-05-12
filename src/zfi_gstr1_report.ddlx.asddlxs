@@ -71,16 +71,16 @@ annotate entity ZFI_GSTR1_REPORT with
   BusinessPlace;
   @UI.lineItem: [{ position: 80 }]
   @UI.identification: [{ position: 80 }]
-  @EndUserText.label: 'Invoice Ref Number'
+  @EndUserText.label: 'Original Ref Number'
   InvRefNumber;
   @UI.lineItem: [{ position: 85 }]
   @UI.identification: [{ position: 85 }]
   @EndUserText.label: 'Document Type'
   DocumentType;
-  @UI.lineItem: [{ position: 90 }]
-  @UI.identification: [{ position: 90 }]
-  @EndUserText.label: 'Document Type Descp'
-  DocTypeDesc;
+  //  @UI.lineItem: [{ position: 90 }]
+  //  @UI.identification: [{ position: 90 }]
+  //  @EndUserText.label: 'Document Type Descp'
+  //  DocTypeDesc;
   @UI.lineItem: [{ position: 95 }]
   @UI.identification: [{ position: 95 }]
   @EndUserText.label: 'Document Date'
@@ -153,30 +153,30 @@ annotate entity ZFI_GSTR1_REPORT with
   @UI.identification: [{ position: 185 }]
   @EndUserText.label: 'Profit Center'
   ProfitCenter;
-  @UI.lineItem: [{ position: 190 }]
-  @UI.identification: [{ position: 190 }]
-  @EndUserText.label: 'Profit Center Desp'
-  ProfitCenterDesp;
+  //  @UI.lineItem: [{ position: 190 }]
+  //  @UI.identification: [{ position: 190 }]
+  //  @EndUserText.label: 'Profit Center Desp'
+  //  ProfitCenterDesp;
   @UI.lineItem: [{ position: 195 }]
   @UI.identification: [{ position: 195 }]
   @EndUserText.label: 'HSN Nature'
   HsnNature;
-  @UI.lineItem: [{ position: 200 }]
-  @UI.identification: [{ position: 200 }]
-  @EndUserText.label: 'GST Status'
-  GstinStatus;
+  //  @UI.lineItem: [{ position: 200 }]
+  //  @UI.identification: [{ position: 200 }]
+  //  @EndUserText.label: 'GST Status'
+  //  GstinStatus;
   @UI.lineItem: [{ position: 205 }]
   @UI.identification: [{ position: 205 }]
   @EndUserText.label: 'Our GSTIN'
   OurGSTIN;
-  @UI.lineItem: [{ position: 210 }]
-  @UI.identification: [{ position: 210 }]
-  @EndUserText.label: 'Booking Date'
-  BookingDate;
-  @UI.lineItem: [{ position: 215 }]
-  @UI.identification: [{ position: 215 }]
-  @EndUserText.label: 'Carpet Area'
-  CarpetArea;
+  //  @UI.lineItem: [{ position: 210 }]
+  //  @UI.identification: [{ position: 210 }]
+  //  @EndUserText.label: 'Booking Date'
+  //  BookingDate;
+  //  @UI.lineItem: [{ position: 215 }]
+  //  @UI.identification: [{ position: 215 }]
+  //  @EndUserText.label: 'Carpet Area'
+  //  CarpetArea;
   @UI.lineItem: [{ position: 220 }]
   @UI.identification: [{ position: 220 }]
   @EndUserText.label: 'Unit No'
@@ -197,20 +197,42 @@ annotate entity ZFI_GSTR1_REPORT with
   //  @UI.identification: [{ position: 240 }]
   //  @EndUserText.label: 'IRN Date'
   //  IRNDate;
-  @UI.lineItem: [{ position: 245 }]
-  @UI.identification: [{ position: 245 }]
-  @EndUserText.label: 'Park by'
-  ParkBy;
+  //  @UI.lineItem: [{ position: 245 }]
+  //  @UI.identification: [{ position: 245 }]
+  //  @EndUserText.label: 'Park by'
+  //  ParkBy;
   @UI.lineItem: [{ position: 250 }]
   @UI.identification: [{ position: 250 }]
   @EndUserText.label: 'Post by'
   PostBy;
-  @UI.lineItem: [{ position: 255 }]
-  @UI.identification: [{ position: 255 }]
-  @EndUserText.label: 'CS Document No'
-  CSreference;
+  //  @UI.lineItem: [{ position: 255 }]
+  //  @UI.identification: [{ position: 255 }]
+  //  @EndUserText.label: 'CS Document No'
+  //  CSreference;
+  //  @UI.lineItem: [{ position: 260 }]
+  //  @UI.identification: [{ position: 260 }]
+  //  @EndUserText.label: 'Milestone Descp'
+  //  MilestoneDescp;
+  @UI.lineItem: [{ position: 265 }]
+  @UI.identification: [{ position: 265 }]
+  @EndUserText.label: 'Shipping bill no.'
+  YY1_ShippingbillNo_BDH;
   @UI.lineItem: [{ position: 260 }]
   @UI.identification: [{ position: 260 }]
-  @EndUserText.label: 'Milestone Descp'
-  MilestoneDescp;
+  @EndUserText.label: 'Shipping bill date'
+  YY1_Shippingbilldate_BDH;
+  @UI.lineItem: [{ position: 265 }]
+  @UI.identification: [{ position: 265 }]
+  @EndUserText.label: 'Port of discharge'
+  YY1_PortofDischarge_SDH;
+
+  @UI.lineItem: [{ position: 270 }]
+  @UI.identification: [{ position: 270 }]
+  @EndUserText.label: 'Customer Account Group'
+  CustomerAccountGroup;
+
+  @UI.lineItem: [{ position: 275 }]
+  @UI.identification: [{ position: 275 }]
+  @EndUserText.label: 'Plant'
+  Plant;
 }

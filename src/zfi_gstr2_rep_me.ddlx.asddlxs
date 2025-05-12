@@ -78,7 +78,7 @@ annotate entity ZFI_GSTR2_REPORT with
   @UI.lineItem: [{ position: 85 }]
   @UI.identification: [{ position: 85 }]
   @EndUserText.label: 'Supplier Name'
-  SupplierFullName;
+  SupplierName;
   @UI.lineItem: [{ position: 90 }]
   @UI.identification: [{ position: 90 }]
   @EndUserText.label: 'Supplier GSTIN'
@@ -211,10 +211,10 @@ annotate entity ZFI_GSTR2_REPORT with
   @UI.identification: [{ position: 250 }]
   @EndUserText.label: 'HSN Nature'
   hsnnature;
-  @UI.lineItem: [{ position: 255 }]
-  @UI.identification: [{ position: 255 }]
-  @EndUserText.label: 'GST Status'
-  GstinStatus;
+//  @UI.lineItem: [{ position: 255 }]
+//  @UI.identification: [{ position: 255 }]
+//  @EndUserText.label: 'GST Status'
+//  gstinstatus;
   @UI.lineItem: [{ position: 260 }]
   @UI.identification: [{ position: 260 }]
   @EndUserText.label: 'QTY'
@@ -223,10 +223,10 @@ annotate entity ZFI_GSTR2_REPORT with
   @UI.identification: [{ position: 265 }]
   @EndUserText.label: 'UOM'
   uom;
-  @UI.lineItem: [{ position: 270 }]
-  @UI.identification: [{ position: 270 }]
-  @EndUserText.label: 'Park by'
-  ParkBy;
+//  @UI.lineItem: [{ position: 270 }]
+//  @UI.identification: [{ position: 270 }]
+//  @EndUserText.label: 'Park by'
+//  parkby;
   @UI.lineItem: [{ position: 275 }]
   @UI.identification: [{ position: 275 }]
   @EndUserText.label: 'Post by'
@@ -235,21 +235,29 @@ annotate entity ZFI_GSTR2_REPORT with
   @UI.identification: [{ position: 280 }]
   @EndUserText.label: 'PAN'
   Pan;
-  @UI.lineItem: [{ position: 285 }]
-  @UI.identification: [{ position: 285 }]
-  @EndUserText.label: 'MSME Status'
-  MsmeStatus;
-  @UI.lineItem: [{ position: 290 }]
-  @UI.identification: [{ position: 290 }]
-  @EndUserText.label: 'Clearing Status'
-  ClearStatus;
-  @UI.lineItem: [{ position: 295 }]
-  @UI.identification: [{ position: 295 }]
-  @EndUserText.label: 'IRN Number'
-  InvRefNumber;
+//  @UI.lineItem: [{ position: 285 }]
+//  @UI.identification: [{ position: 285 }]
+//  @EndUserText.label: 'MSME Status'
+//  msmestatus;
+//  @UI.lineItem: [{ position: 290 }]
+//  @UI.identification: [{ position: 290 }]
+//  @EndUserText.label: 'Clearing Status'
+//  clearstatus;
+//  @UI.lineItem: [{ position: 295 }]
+//  @UI.identification: [{ position: 295 }]
+//  @EndUserText.label: 'IRN Number'
+//  InvRefNumber;
   @UI.lineItem: [{ position: 295 }]
   @UI.identification: [{ position: 295 }]
   @EndUserText.label: 'WBS element'
   ProjectElement;
-  
+  @UI.lineItem: [{ position: 300 }]
+  @UI.identification: [{ position: 300 }]
+  @EndUserText.label: 'Plant'
+  Plant;
+   @UI.lineItem: [{ position: 300 }]
+  @UI.identification: [{ position: 300 }]
+  @EndUserText.label: 'Account group'
+  SupplierAccountGroup;
+
 }

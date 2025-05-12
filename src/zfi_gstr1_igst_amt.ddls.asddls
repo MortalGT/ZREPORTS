@@ -12,12 +12,14 @@ define root view entity ZFI_GSTR1_IGST_AMT
       TaxCode,
       @Semantics.amount.currencyCode: 'CompanyCodeCurrency'
       AmountInTransactionCurrency as IGSTAmt
+
 }
 where
   TransactionTypeDetermination = 'JOI'
 group by
   CompanyCode,
   AccountingDocument,
+  
   FiscalYear,
   CompanyCodeCurrency,
   TaxCode,
